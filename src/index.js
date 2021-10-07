@@ -1,8 +1,7 @@
 import React from "react";
+import "@atlaskit/css-reset";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
-import Navbar from "./components/Navbar.js";
-import "@atlaskit/css-reset";
+import App from "./components/App";
 
-ReactDOM.render(<Navbar />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
