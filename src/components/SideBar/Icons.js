@@ -9,25 +9,32 @@ import { Folder } from "@styled-icons/boxicons-regular";
 import { Settings } from "@styled-icons/fluentui-system-regular";
 import { InternetExplorer } from "@styled-icons/boxicons-logos";
 import { LogOut } from "@styled-icons/boxicons-regular";
+import { LogIn } from "@styled-icons/boxicons-regular";
+
+export const SignInIcon = styled(LogIn)`
+  width: 1.8rem;
+  cursor: pointer;
+`;
+
+export const SignOutIcon = styled(LogOut)`
+  cursor: pointer;
+  width: 1.8rem;
+`;
 
 export const MenuIcon = styled(Menu)`
   cursor: pointer;
-  width: 1.3rem;
+  width: 2rem;
 `;
 
 export const SiteIcon = styled(InternetExplorer)`
   cursor: pointer;
-  width: 1.8rem;
-  height: 1.8rem;
+  width: 3rem;
+  height: 3rem;
 `;
 
 export const SearchIcon = styled(Search)`
-  width: 1rem;
+  width: 1.8rem;
   z-index: 10;
-`;
-
-export const LogOutIcon = styled(LogOut)`
-  width: 1rem;
 `;
 
 export const ThListIcon = styled(ThLargeOutline)`
@@ -54,7 +61,7 @@ export const SettingsIcon = styled(Settings)`
   width: ${(props) => props.width}rem;
 `;
 
-export const ListIcons = ({ name, width = 1 }) => {
+export const ListIcons = ({ name, width = 1.7 }) => {
   return (
     <>
       {name.toLowerCase() === "dashboard" && <ThListIcon width={width} />}

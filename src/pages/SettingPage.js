@@ -1,19 +1,15 @@
 import styled from "styled-components";
-import DragBox from "../components/DragBox";
 
 const Container = styled.div`
-  padding: 10px;
-  width: 500px;
-  height: 500px;
-  background: white;
+  position: relative;
+  padding: 20px 20px 100px 20px;
+  margin: 0 auto;
+  width: 890px;
+  min-width: 890px;
 `;
 
 const SettingPage = () => {
-  return (
-    <Container>
-      <DragBox />
-    </Container>
-  );
+  return <Container></Container>;
 };
 
 export default SettingPage;

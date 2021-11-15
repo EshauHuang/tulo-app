@@ -4,7 +4,7 @@ import { SiteIcon, MenuIcon } from "./Icons";
 
 const SiteName = styled.div`
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 2rem;
   margin-left: 5px;
 `;
 
