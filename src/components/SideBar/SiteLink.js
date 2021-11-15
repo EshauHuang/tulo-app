@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { ListIcons } from "./Icons";
-import { hoverLink } from "../../animates";
+import { hoverLink } from "../../global/animations";
 
-const Container = styled.div`
+const Container = styled(Link)`
   display: flex;
   align-items: center;
   box-sizing: border-box;
@@ -18,24 +18,25 @@ const Container = styled.div`
 const SiteName = styled.div`
   margin-left: 10px;
   overflow: hidden;
-  font-size: ${(props) => props.theme.fs}rem;
+  white-space: nowrap;
   transition: max-width 0.4s ease;
   max-width: ${(props) => (props.hide ? 0 : 120)}px;
+  font-size: 1.8rem;
 `;
 
-const LinkWrap = styled(Link)`
+const Wrap = styled.div`
   display: flex;
 `;
 
-const LinkSite = ({ name, hide }) => {
+const SiteLink = ({ item, hide }) => {
   return (
-    <Container hide={hide}>
-      <LinkWrap to={`${name}`}>
-        <ListIcons name={name} />
-        <SiteName hide={hide}>{name}</SiteName>
-      </LinkWrap>
+    <Container hide={hide} to={`/${item.nameEn.toLowerCase()}`}>
+      <Wrap>
+        <ListIcons name={item.nameEn} />
+        <SiteName hide={hide}>{item.nameCh}</SiteName>
+      </Wrap>
     </Container>
   );
 };
 
-export default LinkSite;
+export default SiteLink;

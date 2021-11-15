@@ -4,13 +4,20 @@ import { useState } from "react";
 import SideBar from "./SideBar";
 import HomePage from "../pages/HomePage";
 import SettingPage from "../pages/SettingPage";
-
+import WorkPage from "../pages/WorkPage";
+import SignInPage from "../pages/SignInPage";
+import SignUpPage from "../pages/SignUpPage";
+import UserPage from "../pages/UserPage";
+import WorkEditPage from "../pages/WorkEditPage";
 import { ThemeProvider } from "styled-components";
+import { signOut } from "../global/webAPI";
+import { UserContext } from "../global/contexts";
+import useUser from "../hooks/useUser";
+import GlobalStyle from "../constants/globalStyle";
 
 const navbarTheme = {
-  fs: 1,
   fc: "#f1f2f6",
-  bg: "#24292d",
+  bg: "#222",
   searchBg: "#485460",
 };
 
@@ -21,21 +28,48 @@ const Wrapper = styled.div`
 
 const App = () => {
   const [hideSidebar, setHideSiteBar] = useState(0);
+  const [user, setUser] = useUser();
+  const handleSignOut = () => {
+    (async () => {
+      signOut();
+      setUser(null);
+    })();
+  };
   return (
     <ThemeProvider theme={navbarTheme}>
-      <Router>
-        <SideBar state={{ hideSidebar, setHideSiteBar }} />
-        <Wrapper hide={hideSidebar}>
-          <Switch>
-            <Route exact path="/">
-              <HomePage />
-            </Route>
-            <Route path="/setting">
-              <SettingPage />
-            </Route>
-          </Switch>
-        </Wrapper>
-      </Router>
+      <GlobalStyle />
+      <UserContext.Provider value={{ user, setUser }}>
+        <Router>
+          <SideBar
+            state={{ hideSidebar, setHideSiteBar }}
+            user={user}
+            event={{ handleSignOut }}
+          />
+          <Wrapper hide={hideSidebar}>
+            <Switch>
+              <Route exact path="/">
+                <HomePage />
+              </Route>
+              <Route path="/setting">
+                <SettingPage />
+              </Route>
+              <Route path={["/works", "/newWork", "/work/:workId/:type"]}>
+                <WorkPage />
+              </Route>
+              <Route path="/signIn">
+                <SignInPage />
+              </Route>
+              <Route path="/signUp">
+                <SignUpPage />
+              </Route>
+              <Route path="/user">{user && <UserPage />}</Route>
+              <Route path="/edit:id">
+                <WorkEditPage />
+              </Route>
+            </Switch>
+          </Wrapper>
+        </Router>
+      </UserContext.Provider>
     </ThemeProvider>
   );
 };

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { useRef } from "react";
 import Work from "./Work";
 
 const Container = styled.div``;
@@ -12,13 +11,13 @@ const Header = styled.div`
   width: 100%;
   height: 40px;
   color: ${(props) => props.theme.fc};
-  font-size: 1rem;
+  font-size: 1.8rem;
   font-weight: bold;
   border-bottom: 2px solid #595959;
 `;
 
 const SeeAll = styled.div`
-  font-size: 0.8rem;
+  font-size: 1.3rem;
   min-width: 36px;
   font-weight: normal;
   color: #595959;
@@ -33,19 +32,16 @@ const WorksList = styled.div`
   padding: 20px 30px;
 `;
 
-const WorksBlock = () => {
-  const array = Array.from(Array(10).keys());
-  const ItemWrapRef = useRef(null);
-
+const WorksBlock = ({ works, title }) => {
   return (
     <Container>
       <Header>
-        <div>最受歡迎</div>
+        <div>{title}</div>
         <SeeAll>See All</SeeAll>
       </Header>
-      <WorksList ref={ItemWrapRef}>
-        {array.map((id) => (
-          <Work key={id} />
+      <WorksList>
+        {works.map((work, index) => (
+          <Work work={work} key={index} />
         ))}
       </WorksList>
     </Container>

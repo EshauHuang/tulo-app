@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Search from "./Search";
-import LinkSite from "./LinkSite";
+import SiteLink from "./SiteLink";
 import Profile from "./Profile";
 import Header from "./Header";
 
@@ -18,11 +18,22 @@ const Container = styled.div`
   * {
     color: ${(props) => props.theme.fc};
   }
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 `;
 
-const SideBar = ({ state }) => {
+const SideBar = ({ state, user, event }) => {
   const { hideSidebar, setHideSiteBar } = state;
-  const lists = ["Dashboard", "User", "Message", "Works", "Loves", "Setting"];
+  const { handleSignOut } = event;
+  const lists = [
+    {
+      nameEn: "user",
+      nameCh: "個人資料",
+    },
+    {
+      nameEn: "works",
+      nameCh: "作品",
+    },
+  ];
   const handleShowBar = () => {
     setHideSiteBar(hideSidebar ? 0 : 1);
   };
@@ -30,10 +41,10 @@ const SideBar = ({ state }) => {
     <Container hide={hideSidebar}>
       <Header hide={hideSidebar} handleShowBar={handleShowBar} />
       <Search hide={hideSidebar} handleShowBar={handleShowBar} />
-      {lists.map((name, index) => (
-        <LinkSite key={index} name={name} hide={hideSidebar} />
+      {lists.map((item, index) => (
+        <SiteLink key={index} item={item} hide={hideSidebar} />
       ))}
-      <Profile hide={hideSidebar} />
+      <Profile user={user} hide={hideSidebar} onClick={handleSignOut} />
     </Container>
   );
 };
