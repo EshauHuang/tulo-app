@@ -123,7 +123,6 @@ const WorkPage = () => {
   const isShowMore = pictures.total > pictures.order.length;
   const handleSortStart = () => {
     document.body.style.cursor = "grabbing";
-    console.log("asdasd");
   };
   const handleSortEnd = ({ oldIndex, newIndex }) => {
     document.body.style.cursor = "default";
@@ -183,10 +182,6 @@ const WorkPage = () => {
     let newItems, newOrder;
     try {
       [newItems, newOrder] = setNewFiles(files, itemId);
-      console.log({
-        items: { ...pictures.items, ...newItems },
-        order: [...pictures.order, ...newOrder],
-      });
       setPictures(({ items, order }) => ({
         items: { ...items, ...newItems },
         order: [...order, ...newOrder],
@@ -209,7 +204,6 @@ const WorkPage = () => {
       };
     });
   };
-  console.log(pictures);
   const handleUploadFiles = () => {
     fileRef.current.click();
   };
