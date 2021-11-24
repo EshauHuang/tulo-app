@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { SortableContainer } from "react-sortable-hoc";
+
 import Picture from "./Picture";
 import Upload from "./Upload";
 

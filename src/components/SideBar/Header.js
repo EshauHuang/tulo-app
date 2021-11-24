@@ -1,24 +1,38 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { SiteIcon, MenuIcon } from "./Icons";
+
+import { MenuIcon } from "./Icons";
+import logo from "../../images/logo.png";
 
 const SiteName = styled.div`
   cursor: pointer;
   font-size: 2rem;
-  margin-left: 5px;
+  margin-left: 10px;
+  white-space: nowrap;
+  font-family: DFKai-SB;
 `;
 
 const SiteMark = styled(Link)`
   display: flex;
   align-items: flex-start;
-  max-width: 130px;
+  white-space: nowrap;
+  max-width: 100%;
   overflow: hidden;
-  transition: max-width 0.4s ease-in-out;
+  transition: max-width 0.4s ease;
+
   ${(props) =>
     props.hide &&
     `
+    transition: max-width 0.4s ease;
     max-width: 0px;
   `}
+`;
+
+const SiteLogo = styled.img`
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
 `;
 
 const HeaderContainer = styled.div`
@@ -31,6 +45,7 @@ const HeaderContainer = styled.div`
     position: absolute;
     top: 10px;
     right: 0;
+
     transform: translateY(-25%);
     ${(props) =>
       props.hide &&
@@ -47,8 +62,8 @@ const Header = ({ hide, handleShowBar }) => {
     <HeaderContainer hide={hide}>
       <MenuIcon onClick={handleShowBar} hide={hide} />
       <SiteMark hide={hide} to="/">
-        <SiteIcon />
-        <SiteName hide={hide}>Website</SiteName>
+        <SiteLogo src={logo} />
+        <SiteName>圖樂</SiteName>
       </SiteMark>
     </HeaderContainer>
   );

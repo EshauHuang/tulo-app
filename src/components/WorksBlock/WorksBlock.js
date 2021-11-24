@@ -1,7 +1,12 @@
 import styled from "styled-components";
+
 import Work from "./Work";
 
-const Container = styled.div``;
+const Container = styled.div`
+  & + & {
+    margin-top: 40px;
+  }
+`;
 const Header = styled.div`
   box-sizing: border-box;
   padding: 5px 10px;
@@ -23,8 +28,6 @@ const SeeAll = styled.div`
   color: #595959;
 `;
 
-// 1080px - (5items * 180 = 900px) = 180px / 6 = 30
-// 1020 - 900 = 120px
 const WorksList = styled.div`
   box-sizing: border-box;
   display: flex;

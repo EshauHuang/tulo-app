@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { useState } from "react";
+
 import { User as UserIcon } from "@styled-icons/feather";
 
 const Container = styled.div`
@@ -7,7 +9,8 @@ const Container = styled.div`
   box-sizing: border-box;
   width: 890px;
   max-width: 890px;
-  padding: 40px 40px 15px 40px;
+  padding: 25px;
+  padding-top: 40px;
   margin: 0 auto;
   border: 0;
   background: #222;
@@ -23,6 +26,7 @@ const Photo = styled.img`
 `;
 
 const PhotoWrap = styled.div`
+  border-radius: 12px;
   margin-top: 20px;
   width: 120px;
   height: 120px;
@@ -33,7 +37,8 @@ const DetailWrap = styled.div`
   position: relative;
   flex: 1;
   margin-top: 20px;
-  margin-left: 40px;
+  margin-left: 35px;
+  padding-bottom: 45px;
 `;
 
 const StyledUserIcon = styled(UserIcon)`
@@ -54,15 +59,20 @@ const Nickname = styled.div`
 `;
 
 const Following = styled.div`
-  font-size: 1.6rem;
-  color: #666666;
-  margin-top: 10px;
+  font-size: 1.4rem;
+  color: #ccc;
+  margin-top: 5px;
 `;
 
 const Intro = styled.div`
   font-size: 1.4rem;
-  color: #ccc;
-  margin-top: 10px;
+  color: white;
+  width: 100%;
+  margin-top: 15px;
+  white-space: pre-line;
+  word-break: break-word;
+  overflow: hidden;
+  max-height: ${(props) => (props.showMore ? "auto" : "235px")};
 `;
 
 const FollowingButton = styled.div`
@@ -81,10 +91,31 @@ const FollowingButton = styled.div`
     opacity: 1;
   }
 `;
+const ShowMore = styled.div`
+  position: absolute;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 14px;
+  background: #0747a6;
+  right: 0;
+  bottom: 0;
+  opacity: 0.8;
+  cursor: pointer;
+  :hover {
+    opacity: 1;
+  }
+`;
 
 const AuthorDetail = ({ workDetail }) => {
+  const [showMore, setShowMoreMore] = useState(false);
   const { user } = workDetail;
   const { photo, nickname, intro } = user ? user : {};
+  const isShowMore = intro.split("\n").length > 10;
+  const handleShowMore = () => {
+    setShowMoreMore(!showMore);
+  };
   return (
     <Container>
       <PhotoWrap>
@@ -94,7 +125,12 @@ const AuthorDetail = ({ workDetail }) => {
         <FollowingButton>跟隨</FollowingButton>
         <Nickname>{nickname}</Nickname>
         <Following>123 跟隨者</Following>
-        <Intro>{intro}</Intro>
+        <Intro showMore={showMore}>{intro}</Intro>
+        {isShowMore && (
+          <ShowMore onClick={handleShowMore}>
+            {showMore ? "顯示部分" : "顯示全部"}
+          </ShowMore>
+        )}
       </DetailWrap>
     </Container>
   );
