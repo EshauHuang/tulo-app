@@ -55,13 +55,13 @@ const WorkIntro = styled.textarea`
   box-sizing: border-box;
   margin: 10px 0px;
   width: 100%;
+  height: 160px;
   padding: 10px;
   outline: none;
   background: transparent;
   border-radius: 4px;
   border: 2px solid rgb(187, 187, 187, 0.2);
   color: white;
-  height: 160px;
   resize: none;
   font-size: 1.3rem;
   ::placeholder {
@@ -133,6 +133,7 @@ const InputWorkDetail = ({
 }) => {
   const { title, type, intro, error } = workDetail;
   const selectRef = useRef(null);
+
   useEffect(() => {
     if (!selectRef.current) return;
     const { children } = selectRef.current;
@@ -170,7 +171,6 @@ const InputWorkDetail = ({
         value={intro}
         name="intro"
         onChange={handleChangeValue}
-        maxLength="400"
       />
       <ErrorMessage>{error}</ErrorMessage>
       <ButtonWrap>

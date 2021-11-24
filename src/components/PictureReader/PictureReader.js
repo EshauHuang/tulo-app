@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { useState } from "react";
+import styled from "styled-components";
 
 const Container = styled.div`
   box-sizing: border-box;
@@ -52,11 +52,11 @@ const ShowMore = styled.div`
 
 const PictureReader = ({ pictures }) => {
   const [showMore, setShowMore] = useState(false);
-
+  const { order, items } = pictures;
+  const isShowMore = pictures ? Object.keys(pictures.items).length > 1 : null;
   const handleShowMore = () => {
     setShowMore(!showMore);
   };
-  const { order, items } = pictures;
   return (
     <Container>
       <ImageWrap>
@@ -70,9 +70,11 @@ const PictureReader = ({ pictures }) => {
               <Image key={`img-${pictureId}`} src={items[pictureId].url} />
             ))}
       </ImageWrap>
-      <ShowMore onClick={handleShowMore}>
-        {showMore ? "顯示部分" : "顯示全部"}
-      </ShowMore>
+      {isShowMore && (
+        <ShowMore onClick={handleShowMore}>
+          {showMore ? "顯示部分" : "顯示全部"}
+        </ShowMore>
+      )}
     </Container>
   );
 };

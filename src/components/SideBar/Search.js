@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { SearchIcon } from "./Icons";
 
 const StyledInput = styled.input`

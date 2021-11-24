@@ -144,7 +144,7 @@ export const getWorkDetail = async (workId) => {
 export const getWorks = async (type) => {
   try {
     const response = await fetch(
-      `${BASE_URL}/works?type=${"art"}&limit=10&page=1`
+      `${BASE_URL}/works?type=${type}&limit=10&page=1`
     );
     return response.json();
   } catch (err) {

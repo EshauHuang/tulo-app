@@ -84,6 +84,7 @@ const HomePage = () => {
         console.log(err);
       }
     })();
+    return () => setWorks({ art: [], comic: [] });
   }, []);
   return (
     <Container>

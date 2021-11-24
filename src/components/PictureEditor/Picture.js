@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { SortableElement } from "react-sortable-hoc";
+
 import { Edit } from "@styled-icons/entypo";
 
 const Remove = styled.div`

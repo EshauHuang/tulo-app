@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+
 import { SignOutIcon, SignInIcon } from "./Icons";
-import { hoverLink } from "../../global/animations";
 import { User as UserIcon } from "@styled-icons/feather";
+
+import { hoverLink } from "../../global/animations";
 
 const Container = styled.div`
   position: absolute;

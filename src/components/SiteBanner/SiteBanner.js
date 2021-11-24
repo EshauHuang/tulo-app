@@ -1,9 +1,25 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
-import pic5 from "../../images/pic5.jpg";
-import pic4 from "../../images/pic4.jpg";
-import pic3 from "../../images/pic3.jpg";
-import pic2 from "../../images/pic2.jpg";
+import banner1 from "../../images/banner1.jpg";
+import banner2 from "../../images/banner2.jpg";
+import banner3 from "../../images/banner3.jpg";
+import banner4 from "../../images/banner4.jpg";
+
+const Container = styled.div`
+  display: flex;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin: 40px 0px;
+`;
+
+const ImageWrap = styled.div`
+  width: 100%;
+  height: 400px;
+  white-space: nowrap;
+  overflow: hidden;
+  user-select: none;
+`;
 
 const Image = styled.img`
   object-fit: cover;
@@ -14,21 +30,6 @@ const Image = styled.img`
   &:first-child {
     margin-left: ${(props) => props.pos * -100}%;
   }
-`;
-
-const Container = styled.div`
-  display: flex;
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-`;
-
-const ImageWrap = styled.div`
-  width: 100%;
-  height: 400px;
-  white-space: nowrap;
-  overflow: hidden;
-  user-select: none;
 `;
 
 const RadioSection = styled.div`
@@ -59,23 +60,20 @@ const Label = styled.label`
   }
 `;
 
-const Input = styled.input`
-  &:checked {
-  }
-`;
+const Input = styled.input``;
 
 const bannerData = [
   {
-    picture: pic2,
+    picture: banner1,
   },
   {
-    picture: pic3,
+    picture: banner2,
   },
   {
-    picture: pic4,
+    picture: banner3,
   },
   {
-    picture: pic5,
+    picture: banner4,
   },
 ];
 
@@ -90,7 +88,7 @@ const SiteBanner = () => {
         resolve(
           (timer = setInterval(() => {
             radio++;
-            if (radio >= 4) {
+            if (radio >= bannerData.length) {
               radio = 0;
             }
             fn(radio);
@@ -99,7 +97,7 @@ const SiteBanner = () => {
       );
     };
   };
-  const changeRadio = debounce(setRadio);
+  const changeRadio = debounce(setRadio, 10000);
   useEffect(() => {
     const timerId = changeRadio(radio);
     return () => {
@@ -133,11 +131,7 @@ const SiteBanner = () => {
       </RadioSection>
       <ImageWrap>
         {bannerData.map((banner, index) => (
-          <Image
-            key={`img-${index}`}
-            pos={index === 0 && radio}
-            src={banner.picture}
-          />
+          <Image key={`img-${index}`} pos={radio} src={banner.picture} />
         ))}
       </ImageWrap>
     </Container>

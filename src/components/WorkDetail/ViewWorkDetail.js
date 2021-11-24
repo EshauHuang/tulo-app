@@ -1,5 +1,6 @@
+import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import styled from "styled-components";
-import { useState } from "react";
+
 import { typeNameData } from "../../global/staticData";
 
 const Container = styled.div`
@@ -16,12 +17,18 @@ const Container = styled.div`
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `;
 
+const BodyWrap = styled.div`
+  flex: 1;
+  margin-top: 20px;
+  margin-left: 10px;
+`;
+
 const Body = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
   margin-left: 10px;
-  padding-bottom: 30px;
+  padding-bottom: 45px;
   & > div + div {
     margin-top: 10px;
   }
@@ -46,21 +53,6 @@ const Info = styled.div`
   border-radius: 4px;
 `;
 
-const Intro = styled.div`
-  box-sizing: border-box;
-  position: relative;
-  display: flex;
-  width: 100%;
-  border-radius: 4px;
-  color: white;
-  font-size: 1.4rem;
-  white-space: pre-line;
-  word-break: break-word;
-  border-radius: 4px;
-  overflow: hidden;
-  max-height: ${(props) => (props.showMore ? "auto" : "240px")};
-`;
-
 const Cover = styled.img`
   object-fit: cover;
   width: 100%;
@@ -69,16 +61,11 @@ const Cover = styled.img`
 `;
 
 const CoverWrap = styled.div`
+  border-radius: 12px;
   width: 180px;
   height: 200px;
   margin-top: 20px;
   background: #333;
-`;
-
-const BodyWrap = styled.div`
-  flex: 1;
-  margin-top: 20px;
-  margin-left: 10px;
 `;
 
 const ShowMore = styled.div`
@@ -98,14 +85,25 @@ const ShowMore = styled.div`
   }
 `;
 
+const Intro = styled.div`
+  box-sizing: border-box;
+  color: white;
+  font-size: 1.4rem;
+  white-space: pre-line;
+  word-break: break-word;
+  border-radius: 4px;
+  overflow: hidden;
+  max-height: ${(props) => (props.showMore ? "auto" : "235px")};
+`;
+
 const ViewWorkDetail = ({ workDetail }) => {
   const [showMore, setShowMoreMore] = useState(false);
   const { title, type, intro, cover } = workDetail;
+  const typeName = typeNameData[type];
+  const isShowMore = intro.split("\n").length > 10;
   const handleShowMore = () => {
     setShowMoreMore(!showMore);
   };
-  const typeName = typeNameData[type];
-  const isShowMore = intro.split("\n") > 10;
   return (
     <Container>
       <CoverWrap>{cover && <Cover src={cover} />}</CoverWrap>

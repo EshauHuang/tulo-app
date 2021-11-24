@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { Menu } from "@styled-icons/heroicons-solid";
 import { Search } from "@styled-icons/boxicons-regular/Search";
 import { ThLargeOutline } from "@styled-icons/typicons";
@@ -29,7 +30,7 @@ export const MenuIcon = styled(Menu)`
 export const SiteIcon = styled(InternetExplorer)`
   cursor: pointer;
   width: 3rem;
-  height: 3rem;
+  min-width: 3rem;
 `;
 
 export const SearchIcon = styled(Search)`

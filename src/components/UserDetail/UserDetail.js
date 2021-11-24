@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { User as UserIcon } from "@styled-icons/feather";
 import { AddToPhotos as AddToPhotosIcon } from "@styled-icons/material-sharp";
 
@@ -18,8 +19,6 @@ const Container = styled.form`
 const Content = styled.div`
   box-sizing: border-box;
   width: 100%;
-  display: flex;
-  align-items: flex-end;
   min-height: 42px;
   padding: 10px;
   background: #333;
@@ -39,6 +38,7 @@ const InputContent = styled.input`
   font-size: 1.3rem;
   border-radius: 4px;
   margin-left: 20px;
+  line-height: 1rem;
   border: 0;
   outline: none;
   :hover,
@@ -56,7 +56,7 @@ const InputIntro = styled.textarea`
   background: #333;
   border-radius: 4px;
   color: white;
-  height: 110px;
+  height: 200px;
   font-size: 1.3rem;
   word-break: break-word;
   margin-left: 20px;
@@ -82,11 +82,17 @@ const Intro = styled.div`
   background: #333;
   border-radius: 4px;
   color: white;
-  height: 110px;
+  height: 200px;
   font-size: 1.3rem;
+  white-space: pre-line;
   word-break: break-word;
+  overflow: auto;
   margin-left: 20px;
   border-radius: 4px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow-x: hidden;
+  overflow-y: auto;
 `;
 
 const Header = styled.div`
