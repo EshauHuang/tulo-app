@@ -22,6 +22,8 @@
 
 在 http://localhost:3000 開啟專案網頁
 
+> 可自行修改 src/images 內的檔案，讓網站的 logo、banner 呈現不同的樣貌
+
 `npm run build`
 
 建立此專案的 production 版本
