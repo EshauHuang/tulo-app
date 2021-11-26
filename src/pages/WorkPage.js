@@ -226,9 +226,11 @@ const WorkPage = () => {
     return () => setWorkPage(1);
   }, [paramsData.params, paramsData.search]);
   useEffect(() => {
-    itemId.current = pictures.order.length;
+    itemId.current =
+      pictures.order.length === 0 ? 0 : Math.max(...pictures.order);
     fileRef.current.value = "";
   }, [pictures, paramsData.params]);
+
   return (
     <Container>
       <Form ref={formRef} encType="multipart/form-data" onSubmit={handleSubmit}>
