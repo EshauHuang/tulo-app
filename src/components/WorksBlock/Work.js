@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+import { User as UserIcon } from "@styled-icons/feather";
+
 const Container = styled(Link)`
   display: flex;
   flex-direction: column;
@@ -79,6 +81,18 @@ const AuthorName = styled.div`
   color: rgba(255, 255, 255, 0.6);
 `;
 
+const StyledUserIcon = styled(UserIcon)`
+  box-sizing: border-box;
+  padding: 3px;
+  width: 24px;
+  height: 24px;
+  object-fit: cover;
+  border-radius: 12px;
+  background: #485460;
+  color: white;
+  border-radius: 12px;
+`;
+
 const Work = ({ work }) => {
   const { title, nickname, photo, cover } = work;
   return (
@@ -89,7 +103,7 @@ const Work = ({ work }) => {
       <WorkDetail>
         <WorkTitle>{title}</WorkTitle>
         <AuthorDetail>
-          <AuthorPhoto src={photo} />
+          {photo ? <AuthorPhoto src={photo} /> : <StyledUserIcon />}
           <AuthorName>{nickname}</AuthorName>
         </AuthorDetail>
       </WorkDetail>
