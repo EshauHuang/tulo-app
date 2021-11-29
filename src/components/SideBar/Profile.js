@@ -127,6 +127,7 @@ const StyledLink = styled(Link)`
 `;
 
 const Profile = ({ hide, user, onClick }) => {
+  console.log(user);
   return (
     <Container hide={hide}>
       <User hide={hide}>
@@ -145,7 +146,7 @@ const Profile = ({ hide, user, onClick }) => {
               {user ? (
                 <>
                   <Name>{user.nickname}</Name>
-                  <Intro>{user.intro ? user.intro : "我的自介"}</Intro>
+                  <Intro>{user.intro}</Intro>
                 </>
               ) : (
                 <NoSignIn>尚未登入</NoSignIn>
