@@ -112,7 +112,7 @@ const AuthorDetail = ({ workDetail }) => {
   const [showMore, setShowMoreMore] = useState(false);
   const { user } = workDetail;
   const { photo, nickname, intro } = user ? user : {};
-  const isShowMore = intro.split("\n").length > 10;
+  const isShowMore = intro ? intro.split("\n").length > 10 : false;
   const handleShowMore = () => {
     setShowMoreMore(!showMore);
   };
