@@ -1,6 +1,7 @@
 ## 網站名稱： Tulo 圖樂
 網站連結：https://tulo.secomet.tw
 
+未登入的使用者可以瀏覽網站內的作品，點進作品可以看到作品資訊、作者資訊及作品圖片。
 <p>
   <img src="https://github.com/FelixHuang214/final-project/blob/master/images/pic0.png" height="300px" />
 </p>
@@ -10,21 +11,20 @@
 <p>
   <img src="https://github.com/FelixHuang214/final-project/blob/master/images/pic2.png" height="300px" />
 </p>
+登入後可以看到自己上傳的作品，並按下＋後新增作品。
 <p>
   <img src="https://github.com/FelixHuang214/final-project/blob/master/images/pic3.png" height="300px" />
 </p>
+上傳的圖片可以依照自己的喜好調整順序，並點擊圖片右上角的 x 進行取消，最後按送出即可新增作品。
 <p>
   <img src="https://github.com/FelixHuang214/final-project/blob/master/images/pic4.png" height="300px" />
 </p>
-<p>
-  <img src="https://github.com/FelixHuang214/final-project/blob/master/images/pic5.png" height="300px" />
-</p>
+
 
 ### 目錄：
   * [專案簡介](#專案簡介)
   * [如何執行](#如何執行)
   * [使用技術](#使用技術)
-  * [功能結構](#功能結構)
   * [資料夾結構](#資料夾結構)
   * [後端 repository](https://github.com/FelixHuang214/final-project-server)
   
@@ -56,7 +56,7 @@
  * React Router
  * React Sortable Hoc
  * Styled Components
-## 功能結構
+
 ## 資料夾結構
 ```
 ├── public
@@ -143,6 +143,13 @@
 │   │   ├── SignUpPage.js
 │   │   ├── UserPage.js
 │   │   └── WorkPage.js
+│   ├── images
+│   │   ├── banner1.jpg
+│   │   ├── banner2.jpg
+│   │   ├── banner3.jpg
+│   │   ├── banner4.jpg
+│   │   ├── logo.png
+│   │   └── userAvatar.jpg
 │   ├── App.test.js
 │   └── index.js
 ├── .gitignore
