@@ -33,23 +33,24 @@
  * 提供創作者分享作品的空間，建立一個可以讓觀賞者及創作者互動的空間，希望可以讓創作者有持續創作的動力。
  * 創作者可將繪畫、漫畫或歌曲等作品上傳供其它人觀賞，觀賞者可對喜歡的作品留言及贊助。
 ## 如何執行
+
+### 安裝專案所需套件
+
 `npm install`
 
-安裝專案所需套件
+### 在 http://localhost:3000 開啟專案網頁
 
 `npm run start`
 
-在 http://localhost:3000 開啟專案網頁
-
 > 可自行修改 src/images 內的檔案，讓網站的 logo、banner 呈現不同的樣貌
+
+### 建立此專案的 production 版本
 
 `npm run build`
 
-建立此專案的 production 版本
+### 於 GitHub Page 上部屬專案網站
 
 `npm run deploy`
-
-於 GitHub Page 上部屬專案網站
 
 ## 使用技術
  * React Hooks
